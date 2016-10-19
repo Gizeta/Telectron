@@ -8,6 +8,10 @@ export function randomSeq() {
     return Math.floor(Math.random() * 1e5);
 }
 
+export function randomSsrc() {
+    return Math.floor(Math.random() * (1 << 30));
+}
+
 export function getLocalIP() {
     let interfaces = os.networkInterfaces();
     for (let k in interfaces) {

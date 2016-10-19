@@ -14,7 +14,7 @@ const styles = {
     },
     text: {
         flex: 'auto',
-        margin: '0 15px'
+        margin: '0 10px'
     },
     button: {
         flex: 'none',

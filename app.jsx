@@ -22,7 +22,7 @@ const styles = {
         WebkitAppRegion: 'drag'
     },
     content: {
-        margin: '5px 15px'
+        margin: '5px 10px'
     }
 }
 
@@ -40,8 +40,8 @@ class App extends Component {
         window.close();
     }
 
-    handleDial(character) {
-        console.log(character);
+    handleDial(num) {
+        Client.sendDtmf(num);
     }
 
     handleConnect(target) {

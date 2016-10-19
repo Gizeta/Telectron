@@ -6,7 +6,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        height: 168
+        height: 170
     },
     row: {
         display: 'flex',
@@ -14,7 +14,8 @@ const styles = {
         justifyContent: 'space-around'
     },
     button: {
-        flex: 'none'
+        flex: 'none',
+        minWidth: 60
     },
     label: {
         fontSize: 20
@@ -47,19 +48,25 @@ export default class DialPanel extends Component {
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('1')} />
+                        onTouchTap={this.handleDialNumber(1)} />
                     <RaisedButton
                         label="2"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('2')} />
+                        onTouchTap={this.handleDialNumber(2)} />
                     <RaisedButton
                         label="3"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('3')} />
+                        onTouchTap={this.handleDialNumber(3)} />
+                    <RaisedButton
+                        label="A"
+                        primary={true}
+                        style={styles.button}
+                        labelStyle={styles.label}
+                        onTouchTap={this.handleDialNumber(12)} />
                 </div>
                 <div style={styles.row}>
                     <RaisedButton
@@ -67,19 +74,25 @@ export default class DialPanel extends Component {
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('4')} />
+                        onTouchTap={this.handleDialNumber(4)} />
                     <RaisedButton
                         label="5"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('5')} />
+                        onTouchTap={this.handleDialNumber(5)} />
                     <RaisedButton
                         label="6"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('6')} />
+                        onTouchTap={this.handleDialNumber(6)} />
+                    <RaisedButton
+                        label="B"
+                        primary={true}
+                        style={styles.button}
+                        labelStyle={styles.label}
+                        onTouchTap={this.handleDialNumber(13)} />
                 </div>
                 <div style={styles.row}>
                     <RaisedButton
@@ -87,19 +100,25 @@ export default class DialPanel extends Component {
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('7')} />
+                        onTouchTap={this.handleDialNumber(7)} />
                     <RaisedButton
                         label="8"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('8')} />
+                        onTouchTap={this.handleDialNumber(8)} />
                     <RaisedButton
                         label="9"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('9')} />
+                        onTouchTap={this.handleDialNumber(9)} />
+                    <RaisedButton
+                        label="C"
+                        primary={true}
+                        style={styles.button}
+                        labelStyle={styles.label}
+                        onTouchTap={this.handleDialNumber(14)} />
                 </div>
                 <div style={styles.row}>
                     <RaisedButton
@@ -107,19 +126,25 @@ export default class DialPanel extends Component {
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('*')} />
+                        onTouchTap={this.handleDialNumber(10)} />
                     <RaisedButton
                         label="0"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('0')} />
+                        onTouchTap={this.handleDialNumber(0)} />
                     <RaisedButton
                         label="#"
                         primary={true}
                         style={styles.button}
                         labelStyle={styles.label}
-                        onTouchTap={this.handleDialNumber('#')} />
+                        onTouchTap={this.handleDialNumber(11)} />
+                    <RaisedButton
+                        label="D"
+                        primary={true}
+                        style={styles.button}
+                        labelStyle={styles.label}
+                        onTouchTap={this.handleDialNumber(15)} />
                 </div>
             </div>
         );

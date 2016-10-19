@@ -5,6 +5,7 @@ import * as helper from './helper';
 
 let dialogs = {};
 let lastSession;
+let timestamp = 0;
 
 sip.start({}, (rq) => {
     if (rq.headers.to.params.tag) {
@@ -42,9 +43,11 @@ function invite(uri) {
             's=-\r\n' +
             'c=IN IP4 ' + helper.getLocalIP() + '\r\n' +
             't=0 0\r\n' +
-            'm=audio ' + rtp.getPort() + ' RTP/AVP 0 8\r\n' +
+            'm=audio ' + rtp.getPort() + ' RTP/AVP 0 8 96\r\n' +
             'a=rtpmap:0 PCMU/8000\r\n' +
             'a=rtpmap:8 PCMA/8000\r\n' +
+            'a=rtpmap:96 telephone-event/8000\r\n' +
+            'a=fmtp:96 0-16\r\n' +
             'a=sendrecv\r\n'
     }, (rs) => {
         if (rs.status >= 300) {
@@ -75,6 +78,11 @@ function invite(uri) {
             }
         });
 
+        let matches = rs.content.match(/audio (\d+) RTP/);
+        if (matches) {
+            rtp.setPort(+matches[1]);
+        }
+
         let id = [rs.headers['call-id'], rs.headers.from.params.tag, rs.headers.to.params.tag].join(':');
 
         if (!dialogs[id]) {
@@ -98,6 +106,7 @@ function invite(uri) {
 
 export function connect(uri) {
     invite(uri);
+    window.connect_uri = uri;
 }
 
 export function disconnect() {
@@ -108,7 +117,7 @@ export function disconnect() {
             to: lastSession.headers.to,
             from: lastSession.headers.from,
             'call-id': lastSession.headers['call-id'],
-            cseq: {method: 'BYE', seq: lastSession.headers.cseq.seq},
+            cseq: {method: 'BYE', seq: lastSession.headers.cseq.seq + 1},
             'user-agent': 'Telectron v0.0.1'
         }
     });
@@ -117,4 +126,22 @@ export function disconnect() {
     delete dialogs[id];
 
     window.app.changeCallState('');
+}
+
+export function sendDtmf(data) {
+    for (let t = 0xa0; t <= 0x5a0; t += 0xa0) {
+        rtp.sendDtmf({
+            timestamp,
+            marker: t == 0xa0 ? true : false,
+            payload: [data, 0x0a, t >> 8, t & 0xff]
+        });
+    }
+    for (let i = 0; i < 3; i++) {
+        rtp.sendDtmf({
+            timestamp,
+            marker: false,
+            payload: [data, 0x8a, 0x06, 0x40]
+        });
+    }
+    timestamp += 160;
 }

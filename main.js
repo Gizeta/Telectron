@@ -3,7 +3,7 @@ import {app, BrowserWindow} from 'electron';
 let mainWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({width: 310, height: 300, frame: false, resizable: false});
+    mainWindow = new BrowserWindow({width: 280, height: 300, frame: false, resizable: false});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
     
     mainWindow.on('closed', () => {
