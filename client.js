@@ -112,4 +112,9 @@ export function disconnect() {
             'user-agent': 'Telectron v0.0.1'
         }
     });
+
+    let id = [lastSession.headers['call-id'], lastSession.headers.from.params.tag, lastSession.headers.to.params.tag].join(':');
+    delete dialogs[id];
+
+    window.app.changeCallState('');
 }

@@ -16,7 +16,3 @@ server.bind(() => {
 export function getPort() {
     return port;
 }
-
-export function createClient() {
-    throw new Error("Not implement.");
-}
