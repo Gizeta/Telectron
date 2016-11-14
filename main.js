@@ -5,6 +5,10 @@ let mainWindow;
 function createWindow() {
     mainWindow = new BrowserWindow({width: 280, height: 300, frame: false, resizable: false});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
+
+    if (process.env.NODE_ENV == "develop") {
+        mainWindow.openDevTools();
+    }
     
     mainWindow.on('closed', () => {
         mainWindow = null;
