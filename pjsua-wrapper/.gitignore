@@ -1,0 +1,5 @@
+.vs/
+Debug/
+Win32/
+x64/
+*.VC.db

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import * as Client from './client';
+import client from './wrapper';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -41,15 +41,16 @@ class App extends Component {
     }
 
     handleDial(num) {
-        Client.sendDtmf(num);
+        client.sendDtmf(num);
     }
 
     handleConnect(target) {
-        Client.connect(`sip:${target}`);
+        client.init();
+        client.call(`sip:${target}`);
     }
 
     handleDisconnect() {
-        Client.disconnect();
+        client.destroy();
     }
 
     changeCallState(callState) {

@@ -26,15 +26,13 @@
   },
   "dependencies": {
     "babel-preset-node6": "^11.0.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.14.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "ffi": "^2.2.0",
     "material-ui": "^0.15.4",
-    "pcmjs": "0.0.2",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-tap-event-plugin": "^1.0.0",
-    "rtp-parser": "^1.0.0",
-    "sip": "0.0.3"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^1.0.0"
   }
 }
