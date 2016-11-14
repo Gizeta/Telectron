@@ -4,7 +4,8 @@
   "description": "Simple VoIP client on Electron",
   "main": "bootstrapper.js",
   "scripts": {
-    "pack": "./node_modules/.bin/electron-packager . Telectron --platform=win32 --arch=x64 --ignore=pjsip --ignore=pjsua-wrapper --overwrite",
+    "clean": "rm -rf ./Telectron-win32-x64",
+    "pack": "./node_modules/.bin/electron-packager . Telectron --platform=win32 --arch=x64 --ignore=pjsip --ignore=pjsua-wrapper --ignore=wrapper.exp --ignore=wrapper.iobj --ignore=wrapper.ipdb --ignore=wrapper.lib --ignore=wrapper.pdb",
     "rebuild": "./node_modules/.bin/electron-rebuild -w ffi -p",
     "start": "./node_modules/.bin/electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,8 @@
     "url": "https://github.com/Gizeta/Telectron/issues"
   },
   "homepage": "https://github.com/Gizeta/Telectron#readme",
+  "os": ["win32"],
+  "cpu": ["x64"],
   "devDependencies": {
     "electron": "^1.4.6",
     "electron-packager": "^8.2.0",

@@ -37,8 +37,4 @@ jspm_packages
 .node_repl_history
 
 Telectron-*/
-pjsua-wrapper.dll
-pjsua-wrapper.exp
-pjsua-wrapper.i*
-pjsua-wrapper.lib
-pjsua-wrapper.pdb
+wrapper.*

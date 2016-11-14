@@ -41,7 +41,7 @@ class App extends Component {
     }
 
     handleDial(num) {
-        client.sendDtmf(num);
+        client.dtmf(num);
     }
 
     handleConnect(target) {

@@ -1,6 +1,6 @@
 var ffi = require('ffi');
 
-var lib = ffi.Library(__dirname + '/pjsua-wrapper/x64/Release/pjsua-wrapper.dll', {
+var lib = ffi.Library(__dirname + '/wrapper', {
     'init': ['int', []],
     'destroy': ['void', []],
     'call': ['int', ['string']],

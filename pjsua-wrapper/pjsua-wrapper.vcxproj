@@ -81,10 +81,12 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)..\pjsip\pjlib\include;$(SolutionDir)..\pjsip\pjlib-util\include;$(SolutionDir)..\pjsip\pjmedia\include;$(SolutionDir)..\pjsip\pjnath\include;$(SolutionDir)..\pjsip\pjsip\include</IncludePath>
     <LibraryPath>$(SolutionDir)..\pjsip\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)..\</OutDir>
+    <TargetName>wrapper</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetExt>.dll</TargetExt>
     <OutDir>$(SolutionDir)..\</OutDir>
+    <TargetName>wrapper</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetExt>.dll</TargetExt>
