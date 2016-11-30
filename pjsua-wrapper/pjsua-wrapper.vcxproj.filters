@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\pjsip\lib\libpjproject-x86_64-x64-vc14-Release-Dynamic.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="wrapper.c">
       <Filter>源文件</Filter>
     </ClCompile>

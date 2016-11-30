@@ -21,11 +21,6 @@
   <ItemGroup>
     <ClCompile Include="wrapper.c" />
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\pjsip\lib\libpjproject-x86_64-x64-vc14-Release-Dynamic.lib">
-      <DeploymentContent>false</DeploymentContent>
-    </Library>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{957BAD40-A3CA-4A99-B783-273F01AC2B26}</ProjectGuid>
     <RootNamespace>pjsuawrapper</RootNamespace>
@@ -134,7 +129,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;libpjproject-x86_64-x64-vc14-Release-Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>

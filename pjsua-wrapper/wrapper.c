@@ -1,8 +1,44 @@
 #include <pjsua.h>
 
+typedef void(*my_callback)(int);
+
 static pjsua_acc_id acc_id;
 static pjsua_call_id call_id;
 static pj_status_t status;
+static my_callback callback = NULL;
+
+static void on_call_state(pjsua_call_id cid, pjsip_event *e) {
+	pjsua_call_info ci;
+	int ret = 0;
+
+	pjsua_call_get_info(cid, &ci);
+
+	switch (ci.state) {
+		case PJSIP_INV_STATE_NULL:
+			ret = 0;
+			break;
+		case PJSIP_INV_STATE_CALLING:
+			ret = 1;
+			break;
+		case PJSIP_INV_STATE_INCOMING:
+			ret = 2;
+			break;
+		case PJSIP_INV_STATE_EARLY:
+			ret = 3;
+			break;
+		case PJSIP_INV_STATE_CONNECTING:
+			ret = 4;
+			break;
+		case PJSIP_INV_STATE_CONFIRMED:
+			ret = 5;
+			break;
+		case PJSIP_INV_STATE_DISCONNECTED:
+			ret = 6;
+			break;
+	}
+	if (callback != NULL)
+		callback(ret);
+}
 
 static void on_incoming_call(pjsua_acc_id aid, pjsua_call_id cid, pjsip_rx_data *rdata) {
 	pjsua_call_info ci;
@@ -35,6 +71,7 @@ __declspec(dllexport) int __cdecl init() {
 		pjsua_config_default(&cfg);
 		cfg.cb.on_incoming_call = &on_incoming_call;
 		cfg.cb.on_call_media_state = &on_call_media_state;
+		cfg.cb.on_call_state = &on_call_state;
 
 		status = pjsua_init(&cfg, NULL, NULL);
 		if (status != PJ_SUCCESS) return status;
@@ -71,4 +108,8 @@ __declspec(dllexport) int __cdecl dtmf(char *str) {
 	status = pjsua_call_dial_dtmf(call_id, &digits);
 	if (status != PJ_SUCCESS) return status;
 	return 0;
+}
+
+__declspec(dllexport) int __cdecl setStateChangedCallback(my_callback cb) {
+	callback = cb;
 }
